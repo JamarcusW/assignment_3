@@ -1,4 +1,4 @@
-package assignment_3;
+
 public class CryptoManager {
 	
 	private static final char LOWER_BOUND = ' ';
@@ -11,7 +11,8 @@ public class CryptoManager {
 	 * @param plainText a string to be encrypted, if it is within the allowable bounds
 	 * @return true if all characters are within the allowable bounds, false if any character is outside
 	 */
-	public static boolean stringInBounds (String plainText) {
+	public static boolean stringInBounds (String plainText) 
+	{
 		
 		for (int i = 0; i < plainText.length(); i++) 
 		{
@@ -34,7 +35,22 @@ public class CryptoManager {
 	 * @return the encrypted string
 	 */
 	public static String encryptCaesar(String plainText, int key) {
-		throw new RuntimeException("method not implemented");
+		
+		 String result ="";
+			
+			for (int i=0; i<plainText.length(); i++) 
+	        { 
+				int temp = plainText.charAt(i) + key;
+				
+				while(temp < LOWER_BOUND)
+				{
+					temp -= RANGE;
+				}
+				
+				result += (char)temp;
+	
+	        } 
+			return result;
 	}
 	
 	/**
@@ -45,8 +61,28 @@ public class CryptoManager {
 	 * @param bellasoStr an uppercase string that specifies the offsets, character by character.
 	 * @return the encrypted string
 	 */
-	public static String encryptBellaso(String plainText, String bellasoStr) {
-		throw new RuntimeException("method not implemented");
+	public static String encryptBellaso(String plainText, String bellasoStr) 
+	{
+		String encryptedString = "";
+		
+		
+
+		for (int i=0; i<plainText.length(); i++) 
+		{
+		
+			
+			int temp = plainText.charAt(i) + bellasoStr.charAt(i % plainText.length());
+			
+			while (temp < UPPER_BOUND)
+			{
+				temp-= RANGE;
+			}
+			
+			encryptedString += (char) temp;
+			System.out.println(encryptedString);
+		}
+		return encryptedString;
+	
 	}
 	
 	/**
@@ -57,8 +93,23 @@ public class CryptoManager {
 	 * @param key an integer that specifies the offset of each character
 	 * @return the plain text string
 	 */
-	public static String decryptCaesar(String encryptedText, int key) {
-		throw new RuntimeException("method not implemented");
+	public static String decryptCaesar(String encryptedText, int key) 
+	{
+		 String result ="";
+			
+			for (int i=0; i<encryptedText.length(); i++) 
+	        { 
+				int temp = encryptedText.charAt(i) - key;
+				
+				while(temp < LOWER_BOUND)
+				{
+					temp += RANGE;
+				}
+				
+				result += (char)temp;
+	        } 
+			return result;
+		
 	}
 	
 	/**
