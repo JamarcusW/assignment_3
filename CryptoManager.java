@@ -124,9 +124,9 @@ public class CryptoManager {
 		{
 			int temp = encryptedText.charAt(i) - bellasoStr.charAt(i % bellasoStr.length());
 			
-			while (temp > UPPER_BOUND)
+			while (temp < UPPER_BOUND)
 			{
-				temp+= RANGE;
+				temp += RANGE;
 			}
 			
 			decryptedString += (char) temp;
