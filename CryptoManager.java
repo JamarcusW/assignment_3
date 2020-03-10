@@ -1,4 +1,4 @@
-
+package assignment_3;
 public class CryptoManager {
 	
 	private static final char LOWER_BOUND = ' ';
@@ -42,7 +42,7 @@ public class CryptoManager {
 	        { 
 				int temp = plainText.charAt(i) + key;
 				
-				while(temp < LOWER_BOUND)
+				while(temp > UPPER_BOUND)
 				{
 					temp -= RANGE;
 				}
@@ -65,7 +65,7 @@ public class CryptoManager {
 	{
 		String encryptedString = "";
 	
-		for (int i=0; i<plainText.length(); i++) 
+		for (int i=0; i< plainText.length(); i++) 
 		{
 			int temp = plainText.charAt(i) + bellasoStr.charAt(i % bellasoStr.length());
 			
@@ -75,7 +75,7 @@ public class CryptoManager {
 			}
 			
 			encryptedString += (char) temp;
-			System.out.println(encryptedString);
+			
 		}
 		return encryptedString;
 	
@@ -124,7 +124,7 @@ public class CryptoManager {
 		{
 			int temp = encryptedText.charAt(i) - bellasoStr.charAt(i % bellasoStr.length());
 			
-			while (temp < UPPER_BOUND)
+			while (temp <LOWER_BOUND)
 			{
 				temp += RANGE;
 			}
